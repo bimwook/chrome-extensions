@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+      html{margin:0; padding:0;overflow: hidden; height: 100%;}
+      body{
+        margin:0; 
+        padding:0;
+        overflow: hidden; 
+        font-size: 14px; 
+        font-family: "Î¢ÈíÑÅºÚ", verdana;
+        background-color: #FAFAFA;
+        height: 100%;
+        padding-top: 32px;
+        box-sizing: border-box; 
+      }
+      img {
+        cursor:pointer; 
+        max-width: 100%;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURcDAwICAgBzZoU0AAAACdFJOU7CwWTfQDAAAABBJREFUCNdjYPjPgBXhEAYAfr8P8VrNepoAAAAASUVORK5CYII=);
+      }
+      a, a:visited, a:hover{color: #008080; text-decoration: none;}
+      .header {
+        margin:0; 
+        color: #FAFAFA; 
+        background: #383838; 
+        text-align: left; 
+        height: 32px; 
+        padding: 0 8px; 
+        line-height: 32px; 
+        font-size: 14px; 
+        box-sizing: border-box; 
+        overflow: hidden;
+        margin-top: -32px;
+      }
+      .header .button{display: inline-block; text-align: center; border: solid 1px #00B0B0; color: white; border-radius:5px; background: #00B0B0; width: 72px; height: 24px; line-height: 24px;}
+      
+      .row{
+        padding: 0; 
+        margin: 5px; 
+        background: white;  
+        border: solid 1px #EEEEEE; 
+        border-radius: 3px; 
+        overflow: hidden;
+      }
+      .row .bar{ 
+        padding: 4px; 
+        color:white; background: #EEEEEE;
+        text-align: center;
+        overflow: hidden;
+      }
+      .row .content {padding: 8px; text-align: center; min-height: 240px;}
+      .row .bar a {
+        margin:0 4px; 
+        padding: 8px;
+        display: inline-block;
+        width: 72px;
+        background-color: white;
+      }
+      
+      
+      #listview{
+        height: 100%;
+        box-sizing: border-box; 
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">Woo.Cruiser</div>
+    <div id="listview"></div>
+    <script type="text/javascript" src="ui.js"></script>
+  </body>
+</html>
+  

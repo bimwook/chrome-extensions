@@ -1,0 +1,33 @@
+.o-woo-button {
+  color: silver;
+  display: block;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: rgba(0,0,0,0.618);
+  transition: all 0.3s ease-out;
+  font-size: 16px;
+  outline: none;
+  font-family: Microsoft Yahei;
+  z-index: 20221225;
+  min-width: 96px;
+}
+.o-woo-button:hover {
+  outline: none;
+  color: white;
+}
+.o-woo-button:active {
+  color: yellow;
+  background-color: rgba(0,0,0,0.712);
+}
+
+#o-btn-look {
+  position: fixed;
+  right: 64px;
+  bottom: 16px;
+}
+#o-btn-twitter {
+  position: fixed;
+  right: 64px;
+  bottom: 64px;
+}

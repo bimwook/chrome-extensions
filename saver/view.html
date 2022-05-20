@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Loading...</title>
+    <style type="text/css">
+      html { margin:0; padding:0; font-size: 16px; }
+      body { 
+        margin:0; 
+        padding:0;
+        font-size: 1em;
+        font-family: verdana;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      header {
+        text-align: center;
+        padding: 0.8em;
+        font-size: 1em;
+        background-color: rgba(0,0,0,0.05);
+      }
+
+      a {
+        cursor: pointer;
+        color: #006291;
+        text-decoration: none;
+        transition: all 0.2s ease-out;
+      }
+      a:link {
+        color: #006291;
+      }
+      a:visited {
+        color: #006291;
+      }
+      a:hover {
+        color: red;
+        text-decoration: none;
+      }
+      a:active {
+        color: darkred;
+        text-decoration: none;
+      }
+
+      em {
+        font-style: normal;
+      }
+      
+      #loading {
+        margin: 12em auto;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <em> |　</em>
+      <a id="a-cache">任务</a>
+      <em>　|　</em>
+      <em id="meta">加载队列等待中</em>
+      <em>　| </em>
+      <a id="a-source" href="about:blank" target="_blank">　查看来源　</a>
+      <em> | </em>
+    </header>
+    <img id="loading" src="loading.svg" alt="" />
+    <img id="img" src="nil.svg" alt="" />
+    <script type="text/javascript" src="view.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+   "background": {
+      "scripts": [ ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "taobao-saver"
+   },
+   "content_scripts": [ {
+      "css": [ "normal.css" ],
+      "js": [ "jquery.js", "content.js" ],
+      "matches": ["https://www.taobao.com/*", "https://detail.tmall.com/*", "https://item.taobao.com/*"],
+      "run_at": "document_idle"
+   } ],
+   "description": "taobao saver",
+   "icons": {
+      "48": "icon.png",
+      "128": "icon.png"
+   },
+   "manifest_version": 2,
+   "name": "taobao-saver",
+   "permissions": [ "activeTab", "http://*/*", "https://*/*" ],
+   "version": "1.0"
+}

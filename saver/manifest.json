@@ -1,0 +1,19 @@
+{
+   "background": {
+      "scripts": [ "main.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "ImaSaver"
+   },
+   "description": "bimwook.com",
+   "icons": {
+      "16": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArysNTF/qSfiEi4a0AbaprhBQNeIcSFqJX85BxrsTzBD9C6zFEov9Ie0/UpUkC/XtNALwaKoapeE22SVcrEpMuR6mihp2yVPz2Pz/n1csMUJAg4IWiBeCMI/z9hCEQhpyYsJMQaxHlbNqtS5eagRTnmw1COBcSnLZAkswX9pbg9y0sCkXDhV5PY1KVZo38YXl1AuYDiQsqdpX6VdmnMP2bkxbTIImqJfblK9CXnYPR1jX6ushfo4aJQSt4Bvm3YYIhB9l1ob5yfne/b98CXba3bOtZii67K3kDqCyWz7+ANMi4qeZX2QGTtt46IfQLj5OTM7hO28jvpjCx0lfBry+IwIDAQAB",
+   "manifest_version": 2,
+   "name": "ImaSaver",
+   "options_page": "options.html",
+   "permissions": [ "activeTab", "contextMenus", "http://*/*", "https://*/*" ],
+   "version": "1.1"
+}

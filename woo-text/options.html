@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Config - Cruiser</title>
+    <style type="text/css" media="screen">
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        padding: 20px;
+      }
+      label {
+        height: 24px;
+        line-height: 24px;        
+        vertical-align: middle;
+        display: inline-block;
+      }
+      input[type="text"] {
+        border: solid 1px #DDDDDD;
+        border-radius: 3px;
+        line-height: 24px;
+        height: 24px;
+        width: 320px;
+        margin: 0;
+        padding: 0 4px;
+        outline: none;
+        vertical-align: middle;
+        -webkit-appearance: none;
+      }
+      button {
+        color: white;
+        margin:0;
+        padding:0 20px;
+        border-radius: 3px;
+        border: none;
+        line-height: 24px;
+        height: 24px;
+        vertical-align: middle;
+        background-color: #008080;
+        outline: none;
+        -webkit-appearance: none;
+      }
+      button:active {
+        background-color: #00C0C0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="hostname">服务器地址：</label>
+      <input type="text" id="hostname" name="hostname" value="https://www.bimwook.com:11180s" />
+      <button id="save">保存</button>
+    </div>
+    <script type="text/javascript" src="./js/options.js" charset="utf-8"></script>
+  </body>
+</html>

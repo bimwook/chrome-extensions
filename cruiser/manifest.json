@@ -1,0 +1,25 @@
+{
+   "background": {
+      "scripts": [ "main.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "cruiser"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   } ],
+   "description": "bimwook.com",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "48": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3d+bTsYOLlRgR0va2mZXFmfyaE4/7e7OqNZvkOfg8MH0180B5x51gpZaZvtsSOHAumlR9Q6FEZhFUSrHCWrQ3JxZ4RoGEuKD9qz6HftOVw6xbwOhUVxd1VbszQFyqj+F8Q79zMmZAHvgKk1/d8efTq2K7rUV1T7UIj6v4TE92HRWMN46pxk1VvfOkZgPpf5Hhtx1LR3fV4hZeS/e8OpIRyjim+a69sAFyzAWfcC/YE50blOFPFFXcyjv3z/jE1CARupgbqNrSaW4pwZuDdFRiGQOPP1r7HMD3gbq6PGjR1KbYo74TtJR1P1K0T9M42XtBEtcVdUFp9pyFTcnzDBC+wIDAQAB",
+   "manifest_version": 2,
+   "name": "cruiser",
+   "options_page": "options.html",
+   "permissions": [ "activeTab", "contextMenus", "http://*/*", "https://*/*" ],
+   "version": "1.0"
+}

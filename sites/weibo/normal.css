@@ -1,0 +1,20 @@
+body { background: white; }
+
+.WB_miniblog{ background: rgba(0,0,0,0.65); }
+.S_wrap { background: rgba(0,0,0,0.65); }
+.WB_frame{ background: rgba(73,72,72,0.25); }
+.WB_vipcover { display: none; }
+.WB_starcover  { display: none; }
+#v6_pl_rightmod_rank { display: none; }
+#v6_trustPagelet_recom_member { display: none; }
+#v6_pl_rightmod_recominfo { display: none; }
+#v6_pl_content_setskin { display: none; }
+#WB_webim { display: none; }
+
+.card-act .o-button {
+  width: 20%;
+}
+
+.WB_row_r4 li {
+  width: 20%;
+}

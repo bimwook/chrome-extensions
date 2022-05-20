@@ -1,0 +1,24 @@
+{
+   "background": {
+      "scripts": [  ]
+   },
+   "browser_action": {
+      "default_icon": "icon32.png",
+      "default_title": "zhihu-saver"
+   },
+   "content_scripts": [ {
+      "css": [ "normal.css" ],
+      "js": [ "jquery.js", "content.js" ],
+      "matches": ["https://www.zhihu.com/*", "https://zhuanlan.zhihu.com/*"],
+      "run_at": "document_idle"
+   } ],
+   "description": "zhihu saver",
+   "icons": {
+      "48": "icon32.png",
+      "128": "icon32.png"
+   },
+   "manifest_version": 2,
+   "name": "zhihu-saver",
+   "permissions": [ "activeTab", "http://*/*", "https://*/*" ],
+   "version": "1.0"
+}

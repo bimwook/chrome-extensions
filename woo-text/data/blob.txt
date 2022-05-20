@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="bimwook.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="author" content="YangBo(BambooYoung)" />
+    <meta name="keywords" content="share,article" />
+    <meta name="description" content="To share your articles to anywhere." />
+    <meta name="woo:uid" content="{{o.uid}}" />
+    <meta name="woo:rowid" content="{{o.rowid}}" />
+    <meta name="woo:created" content="{{o.created}}" />
+    <title>{{o.title}}</title>
+    <style type="text/css">
+      html {margin:0; padding:0; background: gray;}
+      body {margin:0 auto; padding:0; width: 100%; max-width: 980px; font-size: 16px; line-height: 1.8; font-family: verdana, "Microsoft Yahei"; }
+      img  {max-width: 100%; background-color: #EAEAEA; display:block; margin: 0 auto;}
+      h1 {font-size: 32px;}
+      h2 {font-size: 24px;}
+      h3 {font-size: 18px;}
+      h4 {font-size: 16px;}
+      h5 {font-size: 14px;}
+      h6 {font-size: 12px;}
+      a {text-decoration: none; color:#006291;}
+      a:link {color:#006291;}
+      a:visited {color:#006291;}
+      a:hover{ text-decoration: none; color: #FF6633;}
+      hr{ border: none; height: 1px; background: #DDDDDD; }
+      p{margin: 0; padding: 0; text-indent: 2em;}
+      blockquote{ margin: 2em; padding: 8px; text-indent: 0; border-left: solid 5px silver; background-color: #EEEEEE;}
+      .tag{font-size: 0.9em; border: solid 1px silver; border-radius: 3px; padding: 4px; background-color: #EEEEEE; color: gray; vertical-align: middle;}
+      .bar {padding: 4px 16px; color: gray; background-color: #EAEAEA; }
+      #content {position: relative; padding: 32px 96px; background-color: white; overflow: hidden; }
+      #likeit {cursor: pointer; padding: 0 8px; color:#006291; margin-left: 8px; background-color: #FAFAFA;}
+      #likeit:active {background-color: white;}
+      #share {padding: 32px 96px; display: block; overflow: hidden; background-color: #FAFAFA; display: none;}
+      #share .qr-code {float: left;}
+      #share .memo {float: left; margin: 0; padding: 8px; list-style-type: none;}
+      @media screen and (max-width: 639px) {
+        #content{ padding: 8px 32px; overflow: hidden; }
+        #share{ display: none; }
+      }
+      @media screen and (max-width: 479px) {
+        #content{ padding: 8px 16px; overflow: hidden; }
+        #share{ display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">发表于 {{o.modified}}</div>
+    <div id="content">
+      {{o.content}}
+    </div>
+    <div class="bar">
+      <span>阅读: 1　</span>
+      <span id="rank">喜欢: 1　</span>
+      <span id="likeit">+1</span>
+    </div>
+    <div class="bar" style="display: none;">
+      <p>www.bimwook.com</p>
+    </div>
+    <script type="text/javascript">
+      var ui={};
+      ui.rowid="{{o.rowid}}";
+      ui.container = document.getElementById("content");
+      ui.lazyload = {};
+      ui.lazyload.locked = false;
+      ui.lazyload.items = [];
+      ui.lazyload.clear = function(){
+        this.items = [];
+        this.locked = false;
+      };
+      ui.lazyload.run = function(){
+        var me = this;
+        var top = (document.documentElement.scrollTop || document.body.scrollTop);
+        var line = top + document.documentElement.clientHeight;
+        var rest = [];
+        while(me.items.length>0){
+          var img = me.items.pop();
+          var t = img.offsetTop;
+          console.log("t=%s, top=%s, line=%s;", t, top, line);
+          if((t>=top) && (t<=line)) {
+            img.onload = function(){
+              this.status.loaded = true;
+              this.style.cursor = "pointer";
+              this.style.width="auto";
+              this.onclick = function(){  
+                window.open(this.src);
+              };
+            };
+            img.onerror = function(){
+              this.status.loaded = false;
+            }
+            img.src = img.status.src;
+            img.alt = "查看图片";
+          }
+          else{
+            rest.push(img);
+          }
+        }
+        me.items = rest.reverse();
+        if(me.items.length==0) {
+          window.onscroll = null;
+          //console.log("onscroll: clear");
+        }
+      };
+      ui.lazyload.throttle = function(fn, delay){
+        var me = this;
+        var timer=null;
+        return function(){
+          var context=this, args=arguments;
+          window.clearTimeout(timer);
+          timer = window.setTimeout(function(){ fn.apply(me, args); },delay);
+        }
+      };
+      ui.lazyload.reset = function(id){
+        var me = this;
+        var o = (typeof id=="string")?document.getElementById(id) : id;
+        if(!o) return;
+        var list = o.getElementsByTagName("img");
+        for(var i=0; i<list.length; i++){ 
+          var img = list[i];
+          img.src="/woo/common/img/opacity.png";
+          img.style.width="100%";
+          img.style.height = "auto";
+          img.style.background = "silver url(/woo/www/include/img/trans.png) repeat";
+        }
+      };
+      ui.lazyload.load = function(id){
+        var me = this;
+        var o = (typeof id=="string")?document.getElementById(id) : id;
+        if(!o) return;
+        var imglist = o.getElementsByTagName("img");
+        var temp = [];
+        for(var i=0; i<imglist.length; i++){ 
+          temp.push(imglist[i]);
+        }
+        imglist = null;
+        temp.reverse();
+        var datasrc={name:"",value:"/woo/common/img/opacity.png"};
+        for(var i=0; i<temp.length; i++){ 
+          var img = temp[i];
+          img.src="/woo/common/img/opacity.png";
+          img.style.width="100%";
+          img.style.height = "auto";
+          img.status={loaded:false, src: (img.attributes["data-src"]||datasrc).value};
+          me.items.push(img);
+        }
+        temp = null;
+        if(window.onscroll==null){
+          window.onscroll = this.throttle(this.run, 500);
+        };
+        window.onscroll();
+      };
+
+      ui.load = function(){
+        this.lazyload.load(this.container);
+      };
+      ui.load();
+    </script>
+  </body>
+</html>
