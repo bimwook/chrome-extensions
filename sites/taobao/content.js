@@ -191,18 +191,18 @@ void function(){
   main.tmall_detail = function(){
     console.log("** tmall_detail **");
     var data = [];
-    var title = $(".tb-detail-hd h1").text().trim();
+    var title = $('[class*="ItemHeader--root--"] h1').text().trim();
     data.push('');
     data.push("　　# " + this.clean(title));
-    data.push('　　** ¥' + $('.tm-price').last().text().trim() + ' **');
+    data.push('　　** ¥' + $('span[class*="Price--priceText--"]').last().text().trim() + ' **');
     data.push('');
-    var attributes = $("#J_AttrUL li");
+    var attributes = $('[class*="Attrs--attr--"]');
     for(var i=0; i<attributes.length; i++){
       data.push('　　- ' + this.clean($(attributes[i]).text().trim()) );
     }
     data.push('');
     var text = [];
-    var ndx = $("#description p");
+    var ndx = $(".descV8-container p");
     for(let i=0; i<ndx.length; i++){
       var p = ndx[i];
       for (let ii = 0; ii < p.childNodes.length; ii++) {
@@ -243,7 +243,7 @@ void function(){
       data.push(txt);
       data.push('');
     }
-    var medias = $("#J_UlThumb img");
+    var medias = $('[class*="PicGallery--thumbnail--"] img');
     for(var i=0; i<medias.length; i++){
       var src = this.findxx(medias[i].src);
       if(src.match(/\.png$|\.gif$/)) {
@@ -251,26 +251,18 @@ void function(){
       }
       data.push('　　![media](' + src + ')');
     }
-    var bks = $(".tb-sku a");
+    var bks = $(".skuIcon");
     for(var i=0; i<bks.length; i++){
-      var style = window.getComputedStyle(bks[i],false);
-      if(style && style.backgroundImage && style.backgroundImage!="none") {
-        var mc = style.backgroundImage.replace(/'|"/g, "").match(/url\(([^\)]*)\)/g);
-        if(mc){
-          for(var ii=0; ii<mc.length; ii++){
-            var src = mc[ii].match(/url\(([^\)]*)\)/)[1];
-            if(src.match(/\.png$|\.gif$/)) {
-              continue;
-            }
-            data.push('　　![media](' + this.findxx(src) + ')');
-          }
-        }
+      var src = this.findxx(bks[i].src);
+      if(src.match(/\.png$|\.gif$/)) {
+        continue;
       }
+      data.push('　　![media](' + src + ')');
     }
-    var details = $("#description img");
+    var details = $(".descV8-container img");
     for(var i=0; i<details.length; i++){
       var img = $(details[i]);
-      var src = this.findxx(img.data("ks-lazyload") || img.attr("src"));
+      var src = this.findxx(img.data("src") || img.attr("src"));
       if(src.match(/\.png$|\.gif$/)) {
         continue;
       }
@@ -293,21 +285,21 @@ void function(){
   };
   main.tmall_twitter = function(){
     var data = [];
-    var title = $(".tb-detail-hd h1").text().trim();
+    var title = $('[class*="ItemHeader--root--"] h1').text().trim();
     data.push('');
     data.push("　　# " + this.clean(title));
-    data.push('　　** ¥' + $('.tm-price').last().text().trim() + ' **');
-    var rows = $(".rate-grid tr");
+    data.push('　　** ¥' + $('span[class*="Price--priceText--"]').last().text().trim() + ' **');
+    data.push('');
+    var rows = $('[class*="Comment--root--"]');
     for(var i=0; i<rows.length; i++){
       var row = rows[i];
-      var author = $(".rate-user-info", row).text();
+      var author = $('[class*="Comment--userName--"]', row).text();
+      var meta = $('[class*="Comment--meta--"]', row).text();
       data.push('');
-      data.push('　　- ' + author);
-      var texts = $(".tm-rate-fulltxt", row);
-      for(var ii=0; ii<texts.length; ii++){
-        data.push('　　' + this.clean($(texts[ii]).text().trim()) );
-      }
-      var medias = $(".tm-m-photos img", row);
+      data.push('　　- ' + author + " | " + meta);
+      var text = $('[class*="Comment--content--"]', row).text().trim();
+      data.push('　　' + this.clean(text) );
+      var medias = $('[class*="Comment--photo--"] img', row);
       for(var ii=0; ii<medias.length; ii++){
         var src = this.findxx($(medias[ii]).attr("src"));
         if(src){
