@@ -325,14 +325,16 @@ void function(){
   main.run = function () {
     let me = this;
     console.log("** taobao **");
-    if(window.location.href.indexOf("https://www.taobao.com/")==0){
-      let tools = $("div.fixedtool");
-      let a = $('<a href="javascript:;" target="_self" class="a-all fixedtool-8">看看</a>');
-      $(".fixedtool-9", tools).remove();
+    if(window.location.href.indexOf("https://www.taobao.com")==0){
+      let toolkit = $("div.tb-toolkit-list");
+      let xo = $('div[data-name="report"]', toolkit);
+      let a = $('<a href="javascript:;" target="_self">看看</a>');
+      a.html('<i class="toolkit-icon" style="background-image: url(&quot;//gw.alicdn.com/imgextra/i3/O1CN01eCrL4620CrY63DlJF_!!6000000006814-2-tps-48-48.png&quot;);"></i>看看');
       a.on("click", function(){
         me.action();
       });
-      tools.append(a);
+      xo.html("");
+      xo.append(a);
       console.log("** www.taobao.com **");
     }
     else if(window.location.href.indexOf("https://item.taobao.com/item.htm")==0){
@@ -360,5 +362,5 @@ void function(){
       $("body").append(twitter);
     }
   };
-  setTimeout(function(){ main.run() }, 1200);
+  setTimeout(function(){ main.run() }, 3000);
 }();
